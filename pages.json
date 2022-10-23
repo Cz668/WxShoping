@@ -1,0 +1,20 @@
+{
+	"pages": [{
+		"path": "pages/home/home",
+		"path": "pages/cate/cate",
+		"path": "pages/cart/cart",
+		"path": "pages/my/my",
+		"style": {
+			"navigationBarTitleText": "uni-app"
+		}
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}
