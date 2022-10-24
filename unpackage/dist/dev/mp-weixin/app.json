@@ -1,35 +1,12 @@
 {
-  "pages": [{
-    "path": "pages/home/home",
-    "style": {}
-  }, {
-    "path": "pages/cate/cate",
-    "style": {}
-  }, {
-    "path": "pages/cart/cart",
-    "style": {}
-  }, {
-    "path": "pages/my/my",
-    "style": {}
-  }],
-  // "subPackages": [{
-  //   "root": "subpkg",
-  //   "pages": [{
-  //     "path": "goods_detail/goods_detail",
-  //     "style": {}
-  //   }, {
-  //     "path": "goods_list/goods_list",
-  //     "style": {
-  //       "onReachBottomDistance": 150,
-  //       "enablePullDownRefresh": true,
-  //       "backgroundColor": "#F8F8F8"
-  //     }
-  //   }, {
-  //     "path": "search/search",
-  //     "style": {}
-  //   }]
-  // }],
-  "globalStyle": {
+  "pages": [
+    "pages/home/home",
+    "pages/cate/cate",
+    "pages/cart/cart",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "黑马优购",
     "navigationBarBackgroundColor": "#C00000",
@@ -37,7 +14,8 @@
   },
   "tabBar": {
     "selectedColor": "#C00000",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/home/home",
         "text": "首页",
         "iconPath": "static/tab_icons/home.png",
@@ -62,5 +40,6 @@
         "selectedIconPath": "static/tab_icons/my-active.png"
       }
     ]
-  }
+  },
+  "usingComponents": {}
 }
