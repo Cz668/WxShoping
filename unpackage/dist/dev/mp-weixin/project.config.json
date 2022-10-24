@@ -18,7 +18,7 @@
         }
     },
     "compileType": "miniprogram",
-    "libVersion": "",
+    "libVersion": "2.25.4",
     "appid": "wx28757c9ad5b49978",
     "projectname": "wxShoping",
     "condition": {},
