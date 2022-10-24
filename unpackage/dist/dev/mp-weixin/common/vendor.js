@@ -9225,6 +9225,16 @@ function normalizeComponent (
 }
 
 
+/***/ }),
+/* 12 */
+/*!****************************************************************************************************************!*\
+  !*** C:/Users/Admin/Desktop/黑马优购/wxShoping/node_modules/@escook/request-miniprogram/miniprogram_dist/index.js ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\Admin\\Desktop\\黑马优购\\wxShoping\\node_modules\\@escook\\request-miniprogram\\miniprogram_dist\\index.js'");
+
 /***/ })
 ]]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/common/vendor.js.map
