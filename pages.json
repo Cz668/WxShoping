@@ -1,7 +1,9 @@
 {
   "pages": [{
     "path": "pages/home/home",
-    "style": {}
+    "style": {
+      "navigationStyle": "custom"
+    }
   }, {
     "path": "pages/cate/cate",
     "style": {}
@@ -12,23 +14,28 @@
     "path": "pages/my/my",
     "style": {}
   }],
-  // "subPackages": [{
-  //   "root": "subpkg",
-  //   "pages": [{
-  //     "path": "goods_detail/goods_detail",
-  //     "style": {}
-  //   }, {
-  //     "path": "goods_list/goods_list",
-  //     "style": {
-  //       "onReachBottomDistance": 150,
-  //       "enablePullDownRefresh": true,
-  //       "backgroundColor": "#F8F8F8"
-  //     }
-  //   }, {
-  //     "path": "search/search",
-  //     "style": {}
-  //   }]
-  // }],
+  "subPackages": [{
+    "root": "subPackages",
+    "pages": [
+      // {
+      // "path": "goods_detail/goods_detail",
+      // "style": {}
+      // }, 
+      // {
+      //   "path": "goods_list/goods_list",
+      //   "style": {
+      //     "onReachBottomDistance": 150,
+      //     "enablePullDownRefresh": true,
+      //     "backgroundColor": "#F8F8F8"
+      //   }
+      // }, 
+      {
+        "path": "search/search",
+        "style": {
+          "navigationStyle": "custom"
+        }
+      }]
+    }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "黑马优购",

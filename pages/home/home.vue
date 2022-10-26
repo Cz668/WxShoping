@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-search @search="search" :isShow="isShow"></my-search>
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000"
     :duration="1000" :circular="true">
@@ -56,6 +57,8 @@
         navList: [],
         // 3.楼层列表数据
         floorList: [],
+        // 4.控制标题和返回符的显示与隐藏
+        isShow: false,
       }
     },
     onLoad() {
@@ -92,9 +95,16 @@
       
       async getFloorList(){
         const {data: res} = await uni.$http.get('/api/public/v1/home/floordata')
-        console.log('res',res)
+        // console.log('res',res)
         if(res.meta.status !==200) return this.uni.$showMsg()
         this.floorList = res.message
+      },
+      
+      search(){
+        console.log('search')
+        wx.navigateTo({
+          url: '/subPackages/search/search'
+        })
       }
     }
   }

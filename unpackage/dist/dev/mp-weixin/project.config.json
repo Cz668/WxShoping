@@ -18,10 +18,27 @@
         }
     },
     "compileType": "miniprogram",
-    "libVersion": "2.25.4",
+    "libVersion": "",
     "appid": "wx28757c9ad5b49978",
     "projectname": "wxShoping",
-    "condition": {},
+    "condition": {
+        "search": {
+            "current": -1,
+            "list": []
+        },
+        "conversation": {
+            "current": -1,
+            "list": []
+        },
+        "game": {
+            "current": -1,
+            "list": []
+        },
+        "miniprogram": {
+            "current": -1,
+            "list": []
+        }
+    },
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4
