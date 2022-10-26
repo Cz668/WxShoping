@@ -109,8 +109,8 @@
 		},
 		data() {
 			return {
-				show: false,
-				showSync: false,
+				show: true,
+				showSync: true,
 				searchVal: ''
 			}
 		},
@@ -226,16 +226,20 @@
 </script>
 
 <style lang="scss">
-	$uni-searchbar-height: 36px;
+	$uni-searchbar-height: 28px;
 
 	.uni-searchbar {
+    width: 100%;
+    height: 30px;
+    margin: 5px;
+    box-sizing: border-box;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
 		flex-direction: row;
 		position: relative;
-		padding: 10px;
-		// background-color: #fff;
+		// padding: 20px;
+		background-color: #c00000;
 	}
 
 	.uni-searchbar__box {
@@ -250,7 +254,7 @@
 		flex-direction: row;
 		align-items: center;
 		height: $uni-searchbar-height;
-		padding: 5px 8px 5px 0px;
+		// padding: 5px 8px 5px 0px;
 	}
 
 	.uni-searchbar__box-icon-search {

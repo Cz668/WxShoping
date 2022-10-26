@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.search-box {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: #C00000;
+}
+.my-search-container {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.my-search-container .my-search-box {
+  background-color: #FFFFFF;
+  width: 56%;
+  height: 70%;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.my-search-container .my-search-box .placeholder {
+  font-size: 15px;
+  margin-left: 5px;
+}
+.right-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-box .nav-title {
+  font-size: 12px;
+  color: whitesmoke;
+}
+
