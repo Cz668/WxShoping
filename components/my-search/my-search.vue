@@ -6,7 +6,7 @@
       <view class="my-search-container"
       :style="{ 'height': titleBarHeight + 'px'}">
       <view style="margin-right: 10px;" class="right-box">
-        <uni-icons type="back" size="20" v-if="isShow"></uni-icons>
+        <uni-icons type="back" size="20" v-if="isShow" @click="backNav"></uni-icons>
         <text class="nav-title" v-else>黑马优购</text>
       </view>
         <view class="my-search-box" @click="searchBoxHandler()" v-if="!isShow">
@@ -100,10 +100,17 @@ import { mapState, mapMutations} from 'vuex'
         set.delete(e.value)
         set.add(e.value)
         this.historyList = Array.from(set)
-        console.log('history',this.historyList)
+        // console.log('history',this.historyList)
         // this.historyList.push(e)
         this.saveToStorage(this.historyList)
         this.$emit('getLocalSearchResults')
+        wx.navigateTo({
+          url: `/subPackages/goods_list/goods_list?query=${e.value}`
+        })
+      },
+      
+      backNav() {
+        this.$emit('back')
       }
     }
   }

@@ -3,11 +3,15 @@
     <my-search 
       :isShow="isShow" 
       @getSearchResults="getSearchResults"
-      @getLocalSearchResults="getLocalSearchResults">
+      @getLocalSearchResults="getLocalSearchResults"
+      @back="back">
     </my-search>
     <!-- 搜索建议列表 -->
     <view class="sugg-list" v-if="searchResults.length !== 0">
-      <view class="sugg-item" v-for="(item, i) in searchResults" :key="i">
+      <view 
+        class="sugg-item" 
+        v-for="(item, i) in searchResults" 
+        :key="i" >
         <view class="goods-name">{{item.goods_name}}</view>
         <uni-icons type="arrowright" size="16"></uni-icons>
       </view>
@@ -22,7 +26,11 @@
       </view>
       <!-- 列表区域 -->
       <view class="history-list">
-        <view class="history-item" v-for="(item, index) in getSortHistory" :key="index">
+        <view 
+        class="history-item" 
+        v-for="(item, index) in getSortHistory" 
+        :key="index"
+        @click="toGoodsList(item)">
           <uni-tag :text="item" class="text"></uni-tag>
         </view>
       </view>
@@ -54,13 +62,24 @@
       async getSearchResults(ipt){
         if(!ipt.trim()) return this.searchResults = []
         const {data: res} = await uni.$http.get('/api/public/v1/goods/qsearch',{query: ipt})
-        // console.log('res')
+        // console.log('res',res)
         if(res.meta.status !==200) return 
         this.searchResults = res.message
         // console.log('search',this.localSearchResults)
       },
       getLocalSearchResults() {
         this.historyList = JSON.parse(uni.getStorageSync('localSearchResults') || '[]')
+      },
+      
+      back() {
+        wx.navigateBack()
+      },
+      
+      toGoodsList(query) {
+        // console.log('query',query)
+        wx.navigateTo({
+          url: `/subPackages/goods_list/goods_list?query=${query}`
+        })
       }
     }
   }

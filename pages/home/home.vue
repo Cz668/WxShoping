@@ -27,14 +27,15 @@
             <img :src="item3.floor_title.image_src" class="floor-title" >
         </view>
         <view class="floor-img-box" >
-          <view>
+          <view @click="toGoodsList(item3.product_list[0].name)">
             <img :src="item3.product_list[0].image_src" class="img-left"  mode="widthFix">
           </view>
           <view class="right-img-box">
             <view 
-            class="img-right-item"
+              class="img-right-item"
               v-for="(item4, i) in item3.product_list" 
-              :key="i">
+              :key="i"
+              @click="toGoodsList(item4.name)">
               <img :src="item4.image_src" v-if="i !== 0"  :style="{width:
               item4.image_width + 'rpx'}"
               mode="widthFix">
@@ -59,6 +60,8 @@
         floorList: [],
         // 4.控制标题和返回符的显示与隐藏
         isShow: false,
+        // 
+        query: []
       }
     },
     onLoad() {
@@ -95,15 +98,28 @@
       
       async getFloorList(){
         const {data: res} = await uni.$http.get('/api/public/v1/home/floordata')
-        // console.log('res',res)
+        console.log('res',res)
         if(res.meta.status !==200) return this.uni.$showMsg()
         this.floorList = res.message
+        // 只使用一次 map
+        // this.query = this.floorList.map( item => item.product_list)
+        // 使用两次 map
+        // this.query = this.floorList.map( item => {
+        //   return item.product_list.map(itemName => itemName.name)
+        // })
       },
       
       search(){
         console.log('search')
         wx.navigateTo({
           url: '/subPackages/search/search'
+        })
+      },
+      
+      toGoodsList(query) {
+        // console.log('query',query)
+        wx.navigateTo({
+          url: `/subPackages/goods_list/goods_list?query=${query}`
         })
       }
     }
