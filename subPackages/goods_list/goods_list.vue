@@ -1,13 +1,16 @@
 <template>
   <view>
     <view class="goods-list">
-      <view class="goods-item" v-for="(item, index) in goodsList" :key="index">
+      <view 
+        class="goods-item" v-for="(item, index) in goodsList" 
+        :key="index"
+        @click="toGoodsDetail(item.cat_id)">
         <view class="left-box">
           <img :src="item.goods_small_logo" class="left-img">
         </view>
         <view class="right-box">
           <text>{{item.goods_name}}</text>
-          <text class="goods-price">￥{{item.goods_price}}</text>
+          <text class="goods-price">￥{{item.goods_price | tofixed}}</text>
         </view>
       </view>
     </view>
@@ -36,6 +39,12 @@
       this.queryObj.cid = options.cid || ''
       this.getGoodsList()
     },
+    filters: {
+      // 把数字处理为带两位小数点的数字
+      tofixed(num) {
+      return Number(num).toFixed(2)
+      }
+    },
     
     methods: {
       async getGoodsList() {
@@ -43,8 +52,16 @@
         // const data = await uni.$http.get('/api/public/v1/goods/search',this.queryObj)
         // console.log('res',res)
         this.goodsList = res.message.goods
-        console.log('this.goodsList',this.goodsList)
-      }
+        // console.log('this.goodsList',this.goodsList)
+      },
+      
+      toGoodsDetail(good_id) {
+        // console.log('good_id',good_id)
+        wx.navigateTo({
+          url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id
+        })
+      },
+      
     }
   }
 </script>

@@ -110,7 +110,7 @@ var components
 try {
   components = {
     mySearch: function() {
-      return Promise.all(/*! import() | components/my-search/my-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-search/my-search")]).then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 59))
+      return Promise.all(/*! import() | components/my-search/my-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-search/my-search")]).then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 69))
     }
   }
 } catch (e) {
@@ -213,8 +213,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 var _default =
 {
   data: function data() {
@@ -254,8 +252,9 @@ var _default =
 
 
                 // 3.3 请求成功，为 data 中的数据赋值
-                _this.swiperList = res.message;case 7:case "end":return _context.stop();}}}, _callee);}))();
-    },
+                _this.swiperList = res.message;
+                // console.log('swiper',this.swiperList)
+              case 7:case "end":return _context.stop();}}}, _callee);}))();},
     getNavList: function getNavList() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$uni$$http$get2, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
                   uni.$http.get('/api/public/v1/home/catitems'));case 2:_yield$uni$$http$get2 = _context2.sent;res = _yield$uni$$http$get2.data;if (!(
 
@@ -264,9 +263,9 @@ var _default =
     },
 
     getFloorList: function getFloorList() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _yield$uni$$http$get3, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-                  uni.$http.get('/api/public/v1/home/floordata'));case 2:_yield$uni$$http$get3 = _context3.sent;res = _yield$uni$$http$get3.data;
-                console.log('res', res);if (!(
-                res.meta.status !== 200)) {_context3.next = 7;break;}return _context3.abrupt("return", _this3.uni.$showMsg());case 7:
+                  uni.$http.get('/api/public/v1/home/floordata'));case 2:_yield$uni$$http$get3 = _context3.sent;res = _yield$uni$$http$get3.data;if (!(
+
+                res.meta.status !== 200)) {_context3.next = 6;break;}return _context3.abrupt("return", _this3.uni.$showMsg());case 6:
                 _this3.floorList = res.message;
                 // 只使用一次 map
                 // this.query = this.floorList.map( item => item.product_list)
@@ -274,7 +273,7 @@ var _default =
                 // this.query = this.floorList.map( item => {
                 //   return item.product_list.map(itemName => itemName.name)
                 // })
-              case 8:case "end":return _context3.stop();}}}, _callee3);}))();},
+              case 7:case "end":return _context3.stop();}}}, _callee3);}))();},
 
     search: function search() {
       console.log('search');
@@ -287,6 +286,12 @@ var _default =
       // console.log('query',query)
       wx.navigateTo({
         url: "/subPackages/goods_list/goods_list?query=".concat(query) });
+
+    },
+
+    toGoodsDetail: function toGoodsDetail(good_id) {
+      wx.navigateTo({
+        url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

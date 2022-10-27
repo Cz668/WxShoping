@@ -5,11 +5,9 @@
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000"
     :duration="1000" :circular="true">
     <!-- 循环渲染轮播图的 item 项 -->
-      <swiper-item v-for="(item1, i) in swiperList" :key="i">
-        <view class="swiper-item">
+      <swiper-item v-for="(item, index) in swiperList" :key="index">
           <!-- 动态绑定图片的 src 属性 -->
-          <image :src="item1.image_src"></image>
-        </view>
+          <image :src="item.image_src" @click="toGoodsDetail(item.goods_id)"></image>
       </swiper-item>
     </swiper>
     
@@ -88,6 +86,7 @@
       }
       // 3.3 请求成功，为 data 中的数据赋值
       this.swiperList = res.message
+      // console.log('swiper',this.swiperList)
       },
       async getNavList(){
         const {data: res} = await uni.$http.get('/api/public/v1/home/catitems')
@@ -98,7 +97,7 @@
       
       async getFloorList(){
         const {data: res} = await uni.$http.get('/api/public/v1/home/floordata')
-        console.log('res',res)
+        // console.log('res',res)
         if(res.meta.status !==200) return this.uni.$showMsg()
         this.floorList = res.message
         // 只使用一次 map
@@ -121,6 +120,12 @@
         wx.navigateTo({
           url: `/subPackages/goods_list/goods_list?query=${query}`
         })
+      },
+      
+      toGoodsDetail(good_id) {
+        wx.navigateTo({
+          url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id
+        })
       }
     }
   }
@@ -128,8 +133,7 @@
 
 <style lang="scss">
   swiper {
-    height: 330rpx;
-    .swiper-item,
+   height: 330rpx;
     image {
     width: 100%;
     height: 100%;
