@@ -201,6 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   props: {},
@@ -228,7 +229,7 @@ var _default =
 
                 res.meta.status !== 200)) {_context.next = 8;break;}return _context.abrupt("return");case 8:
                 _this.searchResults = res.message;
-                // console.log('search',this.localSearchResults)
+                // console.log('search',this.searchResults)
               case 9:case "end":return _context.stop();}}}, _callee);}))();},
     getLocalSearchResults: function getLocalSearchResults() {
       this.historyList = JSON.parse(uni.getStorageSync('localSearchResults') || '[]');
@@ -242,6 +243,13 @@ var _default =
       // console.log('query',query)
       wx.navigateTo({
         url: "/subPackages/goods_list/goods_list?query=".concat(query) });
+
+    },
+
+    toGoodsDetail: function toGoodsDetail(good_id) {
+      // console.log(good_id)
+      wx.navigateTo({
+        url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

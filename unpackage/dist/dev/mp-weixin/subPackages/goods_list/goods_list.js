@@ -99,6 +99,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.goodsList, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var f0 = _vm._f("tofixed")(item.goods_price)
+
+    return {
+      $orig: $orig,
+      f0: f0
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -148,6 +167,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -170,6 +192,12 @@ var _default =
     this.queryObj.cid = options.cid || '';
     this.getGoodsList();
   },
+  filters: {
+    // 把数字处理为带两位小数点的数字
+    tofixed: function tofixed(num) {
+      return Number(num).toFixed(2);
+    } },
+
 
   methods: {
     getGoodsList: function getGoodsList() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$uni$$http$get, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
@@ -177,7 +205,14 @@ var _default =
                 // const data = await uni.$http.get('/api/public/v1/goods/search',this.queryObj)
                 // console.log('res',res)
                 _this.goodsList = res.message.goods;
-                console.log('this.goodsList', _this.goodsList);case 6:case "end":return _context.stop();}}}, _callee);}))();
+                // console.log('this.goodsList',this.goodsList)
+              case 5:case "end":return _context.stop();}}}, _callee);}))();},
+
+    toGoodsDetail: function toGoodsDetail(good_id) {
+      // console.log('good_id',good_id)
+      wx.navigateTo({
+        url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

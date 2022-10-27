@@ -11,7 +11,8 @@
       <view 
         class="sugg-item" 
         v-for="(item, i) in searchResults" 
-        :key="i" >
+        :key="i" 
+        @click="toGoodsDetail(item.goods_id)">
         <view class="goods-name">{{item.goods_name}}</view>
         <uni-icons type="arrowright" size="16"></uni-icons>
       </view>
@@ -65,7 +66,7 @@
         // console.log('res',res)
         if(res.meta.status !==200) return 
         this.searchResults = res.message
-        // console.log('search',this.localSearchResults)
+        // console.log('search',this.searchResults)
       },
       getLocalSearchResults() {
         this.historyList = JSON.parse(uni.getStorageSync('localSearchResults') || '[]')
@@ -79,6 +80,13 @@
         // console.log('query',query)
         wx.navigateTo({
           url: `/subPackages/goods_list/goods_list?query=${query}`
+        })
+      },
+      
+      toGoodsDetail(good_id) {
+        // console.log(good_id)
+        wx.navigateTo({
+          url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id
         })
       }
     }
