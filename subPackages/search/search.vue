@@ -2,6 +2,7 @@
   <view>
     <my-search 
       :isShow="isShow" 
+      :isSearch="isSearch"
       @getSearchResults="getSearchResults"
       @getLocalSearchResults="getLocalSearchResults"
       @back="back">
@@ -46,6 +47,7 @@
     data() {
       return {
         isShow: true,
+        isSearch: true,
         // 搜索结果数据列表
         searchResults: [],
         // 搜索历史记录
@@ -108,7 +110,7 @@
       white-space: nowrap;
       // 溢出部分隐藏
       overflow: hidden;
-      // 文本溢出后，使用 ... 代替
+      // 文本溢出后，使用（ellipsis） 就是（...) 代替
       text-overflow: ellipsis;
       margin-right: 3px;
     }

@@ -1,6 +1,6 @@
 <template>
   <view>
-    <my-search @search="search" :isShow="isShow"></my-search>
+    <my-search @search="search" :isShow="isShow" :isSearch="isSearch"></my-search>
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000"
     :duration="1000" :circular="true">
@@ -13,7 +13,11 @@
     
     <!-- 分类导航区域 -->
     <view class="nav-list">
-       <view class="nav-list-item" v-for="(item2, index) in navList" :key="index">
+       <view 
+         class="nav-list-item" 
+         v-for="(item2, index) in navList" 
+         :key="index"
+         @click="toCate(index)">
          <img :src="item2.image_src" class="nav-img">
        </view>
     </view>
@@ -58,8 +62,9 @@
         floorList: [],
         // 4.控制标题和返回符的显示与隐藏
         isShow: false,
+        isSearch: false,
         // 
-        query: []
+        query: [],
       }
     },
     onLoad() {
@@ -109,7 +114,7 @@
       },
       
       search(){
-        console.log('search')
+        // console.log('search')
         wx.navigateTo({
           url: '/subPackages/search/search'
         })
@@ -126,6 +131,15 @@
         wx.navigateTo({
           url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id
         })
+      },
+      
+      toCate(i) {
+        // console.log('i',i)
+        if(i === 0) {
+          wx.switchTab({
+            url: '/pages/cate/cate'
+          })
+        }
       }
     }
   }

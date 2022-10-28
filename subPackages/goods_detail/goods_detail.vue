@@ -32,15 +32,48 @@
    
    <!-- 商品详情信息 -->
    <rich-text :nodes="goodsDetail.goods_introduce"></rich-text>
+   
+   <!-- 商品导航组件区域 -->
+   <view class="goods_nav">
+     <uni-goods-nav 
+       :fill="true" 
+       :options="options" 
+       :buttonGroup="buttonGroup" 
+       @click="onClick" 
+       @buttonClick="buttonClick" />
+   </view>
   </view>
 </template>
 
 <script>
+  import {mapMutations} from 'vuex'
   export default {
     data() {
       return {
         // 商品详情数据
-        goodsDetail: []
+        goodsDetail: [],
+        // 商品导航组件区域信息
+        options: [{
+          icon: 'shop',
+          text: '店铺',
+          infoBackgroundColor: '#007aff',
+          infoColor: "red"
+        }, {
+          icon: 'cart',
+          text: '购物车',
+          info: 0
+        }],
+        buttonGroup: [{
+            text: '加入购物车',
+            backgroundColor: '#ff0000',
+            color: '#fff'
+          },
+          {
+            text: '立即购买',
+            backgroundColor: '#ffa200',
+            color: '#fff'
+          }
+        ]
       }
     },
     onLoad(options) {
@@ -49,6 +82,7 @@
     },
     
     methods: {
+      ...mapMutations('cartAbout',['saveToStorage','addToCart']),
       async getGoodsDetailList(goods_id) {
         const { data: res} = await uni.$http.get('/api/public/v1/goods/detail', { goods_id })
         // console.log('res',res)
@@ -63,6 +97,27 @@
           current: index,
           urls: this.goodsDetail.pics.map( img => img.pics_big)
         })
+      },
+      
+      onClick(e) {
+        // console.log('onclick',e)
+      },
+      
+      buttonClick(e) {
+        // console.log('buttonClick',e)
+        if(e.index === 0) {
+          // 组织商品的信息对象
+          // { goods_id, goods_name, goods_price, goods_count, goods_small_logo, goods_state }
+          const goods = {
+            goods_id: this.goodsDetail.goods_id,
+            goods_name: this.goodsDetail.goods_name,
+            goods_price: this.goodsDetail.goods_price,
+            goods_count: 1,
+            goods_small_logo: this.goodsDetail.goods_small_logo,
+            goods_state: true
+          }
+          this.addToCart(goods)
+        }
       }
     }
   }
@@ -108,5 +163,12 @@
       font-size: 12px;
       color: gray;
     }
+  }
+  
+   .goods_nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 </style>

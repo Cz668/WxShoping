@@ -2,14 +2,23 @@
   <view>
     <view
       class="search-box" >
-      <view :style="{'height': statusBarHeight + 'px'}"></view>
-      <view class="my-search-container"
-      :style="{ 'height': titleBarHeight + 'px'}">
-      <view style="margin-right: 10px;" class="right-box">
-        <uni-icons type="back" size="20" v-if="isShow" @click="backNav"></uni-icons>
-        <text class="nav-title" v-else>黑马优购</text>
-      </view>
-        <view class="my-search-box" @click="searchBoxHandler()" v-if="!isShow">
+      <view 
+      :style="{'height': statusBarHeight + 'px'}"></view>
+      <view 
+        class="my-search-container"
+        :style="{ 'height': titleBarHeight + 'px'}">
+        <view style="margin-right: 10px;" class="right-box">
+          <uni-icons 
+            type="back" 
+            size="25" 
+            v-if="isShow" 
+            @click="backNav"
+            color="white">
+          </uni-icons>
+          <view v-else-if="isSearch"></view>
+          <text class="nav-title" v-else>黑马优购</text>
+        </view>
+        <view class="my-search-box" @click="searchBoxHandler()" v-if="!isSearch">
           <!-- 使用 uni-ui 提供的图标组件 -->
           <uni-icons type="search" size="17"></uni-icons>
           <text class="placeholder">搜索</text>
@@ -46,6 +55,11 @@ import { mapState, mapMutations} from 'vuex'
       },
       // 控制标题和返回符的显示与隐藏
       isShow: {
+        type: Boolean,
+        default: false
+      },
+      
+      isSearch: {
         type: Boolean,
         default: false
       }

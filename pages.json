@@ -6,7 +6,9 @@
     }
   }, {
     "path": "pages/cate/cate",
-    "style": {}
+    "style": {
+      "navigationStyle": "custom"
+    }
   }, {
     "path": "pages/cart/cart",
     "style": {}

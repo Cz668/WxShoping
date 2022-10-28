@@ -40,4 +40,10 @@
   font-size: 12px;
   color: gray;
 }
+.goods_nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 
