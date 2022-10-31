@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.cart-box {
+  padding-left: 5px;
+}
+.cart-box .cart-top {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #EFEFEF;
+}
+.cart-box .cart-top .cart-top-title {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.settlement-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+.settlement-box {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.settlement-box .select-box {
+  margin-left: 5px;
+}
+.settlement-box .total-box {
+  display: flex;
+}
+.settlement-box .total-box .btn-payment {
+  min-width: 100px;
+  margin-left: 10px;
+  background-color: #C00000;
+  text-align: center;
+  color: white;
+}
+.summation-text {
+  color: #C00000;
+}
+.cart-margin {
+  padding-bottom: 50px;
+}
+

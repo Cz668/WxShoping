@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.cart-goods-item {
+  display: flex;
+  padding: 10px 5px;
+  border-bottom: 1px solid #EFEFEF;
+}
+.cart-goods-item .left-box {
+  display: flex;
+  align-items: center;
+}
+.cart-goods-item .left-box .goods-img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-right: 5px;
+}
+.right-box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.goods-title {
+  font-size: 12px;
+}
+.price {
+  display: flex;
+  bottom: 0;
+  justify-content: space-between;
+}
+.goods-price {
+  color: #C00000;
+}
+

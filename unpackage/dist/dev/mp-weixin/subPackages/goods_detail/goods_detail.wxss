@@ -46,4 +46,7 @@
   left: 0;
   width: 100%;
 }
+.detail-box {
+  padding-bottom: 50px;
+}
 

@@ -111,7 +111,7 @@ var components
 try {
   components = {
     mySearch: function() {
-      return Promise.all(/*! import() | components/my-search/my-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-search/my-search")]).then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 72))
+      return Promise.all(/*! import() | components/my-search/my-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-search/my-search")]).then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 74))
     }
   }
 } catch (e) {

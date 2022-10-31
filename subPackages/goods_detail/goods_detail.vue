@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="detail-box">
    <!-- 轮播图区域 -->
    <swiper 
      :indicator-dots="true" 
@@ -170,5 +170,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
+  }
+  
+  .detail-box {
+    padding-bottom: 50px;
   }
 </style>
