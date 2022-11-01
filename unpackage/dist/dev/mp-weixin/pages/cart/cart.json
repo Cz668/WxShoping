@@ -2,6 +2,9 @@
   "usingComponents": {
     "my-address": "/components/my-address/my-address",
     "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
-    "my-cart": "/components/my-cart/my-cart"
+    "uni-swipe-action": "/uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action",
+    "uni-swipe-action-item": "/uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item",
+    "my-cart": "/components/my-cart/my-cart",
+    "my-setter": "/components/my-setter/my-setter"
   }
 }

@@ -127,9 +127,9 @@
         })
       },
       
-      toGoodsDetail(good_id) {
+      toGoodsDetail(goods_id) {
         wx.navigateTo({
-          url: '/subPackages/goods_detail/goods_detail?goods_id=' + good_id
+          url: '/subPackages/goods_detail/goods_detail?goods_id=' + goods_id
         })
       },
       

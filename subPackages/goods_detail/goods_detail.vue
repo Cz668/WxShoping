@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex'
+  import { mapMutations , mapGetters} from 'vuex'
   export default {
     data() {
       return {
@@ -80,7 +80,21 @@
       // console.log('option',options.goods_id)
       this.getGoodsDetailList(options.goods_id)
     },
-    
+    computed: {
+      ...mapGetters('cartAbout',['goodsKind'])
+    },
+    watch: {
+      goodsKind: {
+        handler(newValue) {
+          const findResult = this.options.find( x => x.text === '购物车')
+          if(findResult) {
+            findResult.info = newValue
+          }
+        },
+        // 进入页面马上执行
+        immediate: true
+      }
+    },
     methods: {
       ...mapMutations('cartAbout',['saveToStorage','addToCart']),
       async getGoodsDetailList(goods_id) {
@@ -100,7 +114,11 @@
       },
       
       onClick(e) {
-        // console.log('onclick',e)
+        if(e.index === 1) {
+          wx.switchTab({
+            url: '/pages/cart/cart'
+          })
+        }
       },
       
       buttonClick(e) {

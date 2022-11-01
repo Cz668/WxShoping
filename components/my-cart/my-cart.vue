@@ -1,18 +1,18 @@
 <template>
   <view>
-    <view class="cart-goods-item" >
+    <view class="cart-goods-item">
       <view class="left-box">
         <radio 
           :checked="goods.goods_state" 
           color="#C00000" 
           @click="changeState(goods)">
         </radio>
-        <img :src="goods.goods_small_logo || defaultPic" class="goods-img">
+        <img :src="goods.goods_small_logo || defaultPic" class="goods-img" @click="toGoodsDetail(goods.goods_id)">
       </view>
       <view class="right-box">
-        <text class="goods-title">{{goods.goods_name}}</text>
+        <text class="goods-title" @click="toGoodsDetail(goods.goods_id)">{{goods.goods_name}}</text>
         <view class="price">
-          <text class="goods-price">￥{{goods.goods_price}}</text>
+          <text class="goods-price" @click="toGoodsDetail(goods.goods_id)">￥{{goods.goods_price}}</text>
           <view >
             <uni-number-box
               :min="1" 
@@ -62,6 +62,13 @@
         }
         this.upDateAmount(goods_amount)
       },
+      
+      toGoodsDetail(goods_id) {
+        // console.log('goods',goods_id)
+        wx.navigateTo({
+          url: '/subPackages/goods_detail/goods_detail?goods_id=' + goods_id
+        })
+      }
     }
   }
 </script>

@@ -1,42 +1,39 @@
 <template>
-  <view class="cart-margin">
-    <my-address></my-address>
-    <view class="cart-box">
-      <view class="cart-top">
-        <uni-icons type="shop" size="18"></uni-icons>
-        <text class="cart-top-title">购物车</text>
+    <view class="cart-margin" v-if="goodsDetail.length !== 0">
+      <my-address></my-address>
+      <view class="cart-box">
+        <view class="cart-top">
+          <uni-icons type="shop" size="18"></uni-icons>
+          <text class="cart-top-title">购物车</text>
+        </view>
       </view>
+      
+      <!-- 商品列表区域 -->
+      <!-- uni-swipe-action 是最外层包裹性质的容器 -->
+      <uni-swipe-action>
+        <block 
+          v-for="(goods, index) in goodsDetail" 
+          :key="index">
+          <uni-swipe-action-item :right-options="options"  @click="swipeItemClickHandler(goods)">
+            <my-cart :goods="goods"></my-cart>
+          </uni-swipe-action-item>
+        </block>
+      </uni-swipe-action>
+      
+      <!-- 商品结算区域 -->
+      <my-setter></my-setter>
     </view>
-    <view
-      class="cart-goods-item" 
-      v-for="(goods, index) in goodsDetail" 
-      :key="index">
-      <my-cart :goods="goods"></my-cart>
+    
+    <!-- 空白购物车的区域 -->
+    <view class="empty-cart" v-else>
+      <image src="/static/cart_empty@2x.png" class="empty-img"></image>
+      <text class="tip-text">空空如也~</text>
     </view>
-    <!-- 商品结算区域 -->
-    <view class="settlement-container">
-      <view class="settlement-box">
-        <view class="select-box">
-          <radio
-            :checked="isCheckAll" 
-            color="#C00000" 
-            @click="allSelect">
-          </radio>
-          <text>全选</text>
-        </view>
-        <view class="total-box">
-          <text>合计：</text><text class="summation-text">￥{{summation | tofixed}}</text>
-          <view class="btn-payment">
-            结算({{selectGoodsAmount}})
-          </view>
-        </view>
-      </view>     
-    </view>
-  </view>
+
 </template>
 
 <script>
-  import { mapState, mapMutations, mapGetters} from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   export default {
     data() {
       return {
@@ -48,29 +45,13 @@
         }],
       }
     },
-    onLoad() {
-      // console.log('isSeleter',this.isSeleter)
-    },
-    filters: {
-      // 把数字处理为带两位小数点的数字
-      tofixed(num) {
-      return Number(num).toFixed(2)
-      }
-    },
     computed: {
-      ...mapState('cartAbout',['goodsDetail','isAllSelect']),
-      ...mapGetters('cartAbout',['allGoodsAmount','selectGoodsAmount','summation']),
-      isCheckAll(){
-        return this.allGoodsAmount === this.selectGoodsAmount
-      }
+      ...mapState('cartAbout',['goodsDetail']),
     },
     methods: {
-      ...mapMutations('cartAbout',['upAllState']),
-      
-      allSelect() {
-        // console.log('e',e)
-        this.upAllState(this.isCheckAll)
-        // console.log('isSeleter',this.isSeleter)
+      ...mapMutations('cartAbout',['removeGoodsById']),
+      swipeItemClickHandler(goods) {
+        this.removeGoodsById(goods.goods_id)
       }
     }
   }
@@ -123,4 +104,21 @@
   .cart-margin {
     padding-bottom: 50px;
   }
+  
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 150px;
+    .empty-img {
+      width: 90px;
+      height: 90px;
+    }
+    .tip-text {
+      font-size: 12px;
+      color: gray;
+      margin-top: 15px;
+    }
+  }
+
 </style>

@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.userInfo-container {
+  height: 100%;
+  background-color: #F4F4F4;
+}
+.userInfo-container .userInfo-img-name-box {
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #C00000;
+}
+.userInfo-container .userInfo-img-name-box .user-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  border: 1px solid #FFF;
+  box-shadow: 0 1px 5px black;
+}
+.userInfo-container .userInfo-img-name-box .user-name {
+  font-size: 16px;
+  color: #FFF;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.panel-list {
+  padding: 0 10px;
+  position: relative;
+  top: -10px;
+}
+.panel-list .panel-body {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  background-color: white;
+  padding: 8px 0;
+}
+.panel-list .panel-body .panel-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+.order-panel {
+  background-color: white;
+}
+.order-panel .my-order {
+  height: 45px;
+  line-height: 45px;
+  padding-left: 10px;
+  font-size: 15px;
+  border-bottom: 1px solid #F4F4F4;
+}
+.order-panel .oredr-detail {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.order-panel .oredr-detail .order-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.order-panel .oredr-detail .order-item .icon {
+  width: 35px;
+  height: 35px;
+}
+.else-panel {
+  padding: 0 10px;
+  background-color: white;
+}
+.else-panel .else-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F4F4F4;
+}
+

@@ -55,11 +55,11 @@
             "urlCheck" : false
         },
         "usingComponents" : true,
-        "requiredPrivateInfos": [
-              //"getFuzzyLocation",
-              //"choosePoi",
-              "chooseAddress"
-          ]
+        "requiredPrivateInfos" : [
+            //"getFuzzyLocation",
+            //"choosePoi",
+            "chooseAddress"
+        ]
     },
     "vueVersion" : "2"
 }

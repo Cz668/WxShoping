@@ -42,7 +42,11 @@ export default {
       // console.log('state.goodsDetail',state.goodsDetail.length)
     },
     
-    
+    // 通过商品 id 删除
+    removeGoodsById(state,goodsId) {
+      state.goodsDetail = state.goodsDetail.filter(x => x.goods_id !== goodsId)
+      this.commit('cartAbout/saveToStorage')
+    }
   },
   getters: {
     allGoodsAmount(state) {
@@ -51,8 +55,12 @@ export default {
     selectGoodsAmount(state) {
       return state.goodsDetail.filter(x => x.goods_state).reduce((total, item) => total += item.goods_count, 0)
     },
-    summation(state){
+    summation(state) {
       return state.goodsDetail.filter(x => x.goods_state).reduce((total,item) => total += item.goods_count * item.goods_price, 0)
+    },
+    // 商品种类数量
+    goodsKind(state) {
+      return state.goodsDetail.length
     }
   }
 }
